@@ -139,12 +139,16 @@ struct ContentView: View {
                 // TODO
                 print("Check if correct")
 //                currentHiragana = hiraganaToRomajiMap[currentHiragana as! Int]
-            
+                if(usersRomaji == hiraganaToRomajiMap[currentHiragana]) {
+                    print("correct")
+                } else {
+                    print ("fail")
+                }
                 currentHiragana = Array(hiraganaToRomajiMap)[index].key
                 print(currentHiragana)
                 index += 1
                 
-//                print(usersRomaji)
+                print(usersRomaji)
 //                if (correct)
 //                    updateCurrentHiragana()
             }
