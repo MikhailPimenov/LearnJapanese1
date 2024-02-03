@@ -12,10 +12,12 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @State private var currentHiragana: String = ""
+    @State private var currentHiragana: String = "あ"
     @State private var usersRomaji: String = ""
+    @State private var index: Int = 0
 //    @FocusState private var emailFieldIsFocused: Bool = false
-    
+  
+     
     let hiraganaToRomajiMap = [
         "あ" : "a",
         "い" : "i",
@@ -127,7 +129,7 @@ struct ContentView: View {
 //        }
 
         var body: some View {
-            Text
+            Text(currentHiragana)
             TextField(
                 "Enter romaji",
                 text: $usersRomaji
@@ -136,6 +138,13 @@ struct ContentView: View {
             .onSubmit {
                 // TODO
                 print("Check if correct")
+//                currentHiragana = hiraganaToRomajiMap[currentHiragana as! Int]
+            
+                currentHiragana = Array(hiraganaToRomajiMap)[index].key
+                print(currentHiragana)
+                index += 1
+                
+//                print(usersRomaji)
 //                if (correct)
 //                    updateCurrentHiragana()
             }
@@ -146,15 +155,22 @@ struct ContentView: View {
 //
         }
     
-//    var hiraganaIterator = hiraganaToRomajiMap.makeIterator()
-//
-//    mutating func updateCurrentHiragana() -> (index: Int, romaji: String?) {
-//        hiraganaIndex += 1
-//        return (hiraganaIndex, hiraganaToRomajiMap[hiraganaIndex])
-//    }
-    
     
 }
+
+//let dict = [ "foo" : 1, "bar" : 2, "baz" : 3]
+//
+//for idx in indices(dict) {
+//
+//    let (k, v) = dict[idx]
+//    println("Current key: \(k), current value: \(v)")
+//
+//    let nextIdx = idx.successor()
+//    if nextIdx != dict.endIndex {
+//        let (k1, v1) = dict[nextIdx]
+//        println("Next key: \(k1), next value: \(v1)")
+//    }
+//}
 
 //struct Test : View {
 //let dict: [String: Int] = ["test1": 1, "test2": 2, "test3": 3]
