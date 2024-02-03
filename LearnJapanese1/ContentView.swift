@@ -14,6 +14,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var currentHiragana: String = "あ"
     @State private var usersRomaji: String = ""
+    @State private var result: String = ""
     @State private var index: Int = 0
 //    @FocusState private var emailFieldIsFocused: Bool = false
   
@@ -130,6 +131,7 @@ struct ContentView: View {
 
         var body: some View {
             Text(currentHiragana)
+            
             TextField(
                 "Enter romaji",
                 text: $usersRomaji
@@ -140,18 +142,20 @@ struct ContentView: View {
                 print("Check if correct")
 //                currentHiragana = hiraganaToRomajiMap[currentHiragana as! Int]
                 if(usersRomaji == hiraganaToRomajiMap[currentHiragana]) {
-                    print("correct")
+                    currentHiragana = Array(hiraganaToRomajiMap)[index].key
+                    result = "correct"
+                    index += 1
                 } else {
-                    print ("fail")
+                    result = "fail try again"
                 }
-                currentHiragana = Array(hiraganaToRomajiMap)[index].key
-                print(currentHiragana)
-                index += 1
+//                currentHiragana = Array(hiraganaToRomajiMap)[index].key
+//                print(currentHiragana)
                 
-                print(usersRomaji)
+//                print(usersRomaji)
 //                if (correct)
 //                    updateCurrentHiragana()
             }
+            Text(result)
             Button("Tap me") {
                 print("Button tapped")
             }
