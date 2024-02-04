@@ -67,75 +67,15 @@ struct ContentView: View {
         "を" : "wo",
         "ん" : "n" ,
     ]
-//    var body: some View {
-//        let keys = hiraganaToRomajiMap.map{$0.key}
-//        let values = hiraganaToRomajiMap.map{$0.value}
-////
-////
-////        return List {
-////            ForEach(keys.indices) { index in
-////                HStack {
-////                    Text(keys[index])
-//////                    Text("\(values[index])")
-//////                    TextField(
-//////                        keys[index],
-//////                        text: $usersRomaji
-////            //        ).onSubmit {
-////            //            validate(name: username)
-////            //            print("fuck")
-////            //        }
-////
-////                }
-////            }
-////        }
-//
-////        Text("End")
-//
-////        TextField(
-////            "User name (email address)",
-////            text: $username
-////        ).onSubmit {
-////            validate(name: username)
-////            print("fuck")
-////        }
-//
-//    }
-    
-//    var body: some View {
-//            TabView {
-//                Button("Tap me") {
-//                    print("Button tapped")
-//                }
-//                .tabItem {
-//                    Text("One")
-//                }
-//                List {
-//                    Text("Hello")
-//                    Text("World")
-//                }
-//                .tabItem {
-//                    Text("Two")
-//                }
-//            }
-//        }
-    
-    
-//    var body: some View {
-//
-//                Button("Tap me") {
-//                    print("Button tapped")
-//                }
-//
-//
-//        }
+
 
         var body: some View {
-            Text(currentHiragana)
+            Text(currentHiragana).font((Font.system(size:100, design: .default)))
             
             TextField(
                 "Enter romaji",
                 text: $usersRomaji
-            )
+            ).multilineTextAlignment(.center)
             .padding(.horizontal, 20.0)
             .onSubmit {
                 // TODO
@@ -159,61 +99,9 @@ struct ContentView: View {
             Button("Tap me") {
                 print("Button tapped")
             }
-//
-//
         }
-    
-    
 }
 
-//let dict = [ "foo" : 1, "bar" : 2, "baz" : 3]
-//
-//for idx in indices(dict) {
-//
-//    let (k, v) = dict[idx]
-//    println("Current key: \(k), current value: \(v)")
-//
-//    let nextIdx = idx.successor()
-//    if nextIdx != dict.endIndex {
-//        let (k1, v1) = dict[nextIdx]
-//        println("Next key: \(k1), next value: \(v1)")
-//    }
-//}
-
-//struct Test : View {
-//let dict: [String: Int] = ["test1": 1, "test2": 2, "test3": 3]
-//var body: some View {
-//    let keys = dict.map{$0.key}
-//    let values = dict.map {$0.value}
-//
-//    return List {
-//        ForEach(keys.indices) {index in
-//            HStack {
-//                Text(keys[index])
-//                Text("\(values[index])")
-//            }
-//        }
-//    }
-//}
-//}
-
-//var body: some View {
-//    TextField(
-//        "User name (email address)",
-//        text: $username
-//    )
-//    .focused($emailFieldIsFocused)
-//    .onSubmit {
-//        validate(name: username)
-//    }
-//    .textInputAutocapitalization(.never)
-//    .disableAutocorrection(true)
-//    .border(.secondary)
-//
-//
-//    Text(username)
-//        .foregroundColor(emailFieldIsFocused ? .red : .blue)
-//}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
