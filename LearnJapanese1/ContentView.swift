@@ -79,16 +79,18 @@ struct ContentView: View {
             .padding(.horizontal, 20.0)
             .onSubmit {
                 print("Check if correct")
-                if(usersRomaji.caseInsensitiveCompare(hiraganaToRomajiMap[currentHiragana]! ) == .orderedSame) {
+                print("Befoe ", usersRomaji, usersRomaji)
+                let checkresult = usersRomaji.trimmingCharacters(in: .whitespaces)
+                print("After ", usersRomaji, usersRomaji)
+                if(checkresult.caseInsensitiveCompare(hiraganaToRomajiMap[currentHiragana]! ) == .orderedSame) {
                     currentHiragana = Array(hiraganaToRomajiMap)[index].key
                     result = "correct"
                     index += 1
                 } else {
                     result = "fail try again"
                 }
-
             }
-            Text(result)
+            Text(result).padding(.vertical, 40.0)
             Button("Tap me") {
                 print("Button tapped")
             }
