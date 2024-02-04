@@ -78,22 +78,15 @@ struct ContentView: View {
             ).multilineTextAlignment(.center)
             .padding(.horizontal, 20.0)
             .onSubmit {
-                // TODO
                 print("Check if correct")
-//                currentHiragana = hiraganaToRomajiMap[currentHiragana as! Int]
-                if(usersRomaji == hiraganaToRomajiMap[currentHiragana]) {
+                if(usersRomaji.caseInsensitiveCompare(hiraganaToRomajiMap[currentHiragana]! ) == .orderedSame) {
                     currentHiragana = Array(hiraganaToRomajiMap)[index].key
                     result = "correct"
                     index += 1
                 } else {
                     result = "fail try again"
                 }
-//                currentHiragana = Array(hiraganaToRomajiMap)[index].key
-//                print(currentHiragana)
-                
-//                print(usersRomaji)
-//                if (correct)
-//                    updateCurrentHiragana()
+
             }
             Text(result)
             Button("Tap me") {
