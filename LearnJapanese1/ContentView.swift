@@ -79,6 +79,17 @@ struct ContentView: View {
         let shortened = usersRomaji.trimmingCharacters(in: .whitespaces)
         return shortened.caseInsensitiveCompare(currentHirogana) == .orderedSame
     }
+    
+    func checkResult() {
+        if (isSame(usersHirogana: usersRomaji, currentHirogana: hiraganaToRomajiMap[currentHiragana]!)) {
+            index = index + 1
+            currentHiragana = Array(hiraganaToRomajiMap)[index%hiraganaToRomajiMap.count].key
+            result = "Correct"
+            usersRomaji = ""
+        } else {
+            result = "Wrong, try again!"
+        }
+    }
 
 
 
@@ -100,14 +111,15 @@ struct ContentView: View {
 //                                let checkresult = usersRomaji.trimmingCharacters(in: .whitespaces)
 //                                print("After ", usersRomaji, usersRomaji)
 //                                if(checkresult.caseInsensitiveCompare(hiraganaToRomajiMap[currentHiragana]! ) == .orderedSame) {
-                                if (isSame(usersHirogana: usersRomaji, currentHirogana: hiraganaToRomajiMap[currentHiragana]!)) {
-                                    index = index + 1
-                                    currentHiragana = Array(hiraganaToRomajiMap)[index%hiraganaToRomajiMap.count].key
-                                    result = "Correct"
-                                    usersRomaji = ""
-                                } else {
-                                    result = "Wrong, try again!"
-                                }
+//                                if (isSame(usersHirogana: usersRomaji, currentHirogana: hiraganaToRomajiMap[currentHiragana]!)) {
+//                                    index = index + 1
+//                                    currentHiragana = Array(hiraganaToRomajiMap)[index%hiraganaToRomajiMap.count].key
+//                                    result = "Correct"
+//                                    usersRomaji = ""
+//                                } else {
+//                                    result = "Wrong, try again!"
+//                                }
+                                checkResult()
                             }
         
                         Text(result).padding(.vertical, 40.0).foregroundColor(result == "Correct" ? .green : .purple)
